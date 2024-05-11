@@ -3,7 +3,7 @@ import java.util.Scanner;
 interface Game{
 	void gameBoard();
 	String playerMove(String choice,int pos);
-	void cpuMove(String cpu_choice);
+	void cpuMove();
 	String winner(String choice);
 }
 
@@ -41,12 +41,9 @@ class TicTacToe1 implements Game{
 	}
 
 	@Override
-	public void cpuMove(String cpu_choice) {
-		System.out.println("CPU's Turn");
+	public void cpuMove() {
 		// TODO Auto-generated method stub
-		int cpu_pos=(int)(Math.random()*9);
-		x[cpu_pos] = cpu_choice;
-		gameBoard();
+		
 	}
 
 	@Override
@@ -77,20 +74,20 @@ public class TicTacToeDemo1 {
 		String cpu_choice,my_choice;
 		Scanner sc = new Scanner(System.in);
 		System.out.print("\nEnter Choice (X/0):");
-		my_choice = sc.next().toUpperCase();
-		cpu_choice = (my_choice.equals("X"))?"0":"X";
+		my_choice = sc.nextLine().toUpperCase();
+		cpu_choice = (my_choice=="X")?"0":"X";
 		obj.gameBoard();
 		while (true)
 		{
 			System.out.println("Enter Pos b/w (1-9)");
 			int pos = sc.nextInt();
 			String r = obj.playerMove(my_choice, pos);
-			if (r==my_choice)
+			if (r==my_choice || r==cpu_choice)
 			{
 				System.out.println(r+" is Winner");
 				break;
 			}
-			obj.cpuMove(cpu_choice);
+			
 		}
 
 	}
