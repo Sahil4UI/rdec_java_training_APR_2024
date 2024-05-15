@@ -5,7 +5,7 @@ interface MyGame{
 	
 	String player_turn();
 	
-	void cpu_turn();
+	String cpu_turn();
 	
 	String winner(String choice);
 }
@@ -52,9 +52,19 @@ class Game implements MyGame{
 	}
 
 	@Override
-	public void cpu_turn() {
+	public String cpu_turn() {
 		// TODO Auto-generated method stub
+		System.out.println("Cpu's Turn");
+		cpu_pos=(int)(Math.random()*9);
+		if (x[cpu_pos].equals(cpu_choice) ||
+				x[cpu_pos].equals(user_choice))
+		{
+			cpu_turn();
+		}
 		
+		x[cpu_pos]=cpu_choice;
+		showMatrix();
+		return winner(cpu_choice);
 	}
 
 	@Override
@@ -83,7 +93,7 @@ public class TicTacToe {
 		String player_choice,cpu_choice;
 		System.out.println("Enter Choice X/0 : ");
 		player_choice = sc.nextLine().toUpperCase();
-		cpu_choice = (player_choice=="X")?"0":"X";
+		cpu_choice = (player_choice.equals("X"))?"0":"X";
 		Game mygame = new Game(player_choice,cpu_choice);
 		mygame.showMatrix();
 		while (true)
@@ -94,6 +104,14 @@ public class TicTacToe {
 			if (res==player_choice)
 			{
 				System.out.println("Player Wins");
+				break;
+			}
+			
+			mygame.cpu_turn();
+			
+			if (res==cpu_choice)
+			{
+				System.out.println("CPU Wins");
 				break;
 			}
 		}
