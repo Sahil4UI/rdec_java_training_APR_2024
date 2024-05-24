@@ -1,0 +1,14 @@
+Q1.In an array of Strings , Print the Strings having even length
+Q2.Find length of String using Recursion
+Q3.Given an example of final variable ,final class & final method.
+Q4.Write a program using recursion to built this pattern 
+* 
+**
+***
+****
+*****
+Q5.Write a program to check whether number is pallindrome or not using recursion 
+Q6.Write a program to insert/remove a new element in array.
+Q7.Remove duplicates from String
+Q8. Explaiun Try Catch & finally with example.
+Q9 State Diff b/w throw & Throws        
